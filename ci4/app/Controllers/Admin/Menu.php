@@ -79,7 +79,6 @@ class Menu extends BaseController
 		];
 
 		$model = new Menu_M();
-		$model->insert($data);
 
 		if ($model->insert($data) === false) {
 			$error = $model->errors();
