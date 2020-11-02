@@ -31,6 +31,7 @@ $routes->setAutoRoute(true);
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('dashboard', 'Admin\Login::index');
+$routes->get('/', 'Front\Homepage::index');
 
 // $routes->get('joni/(:any)', 'admin\kategori::selectWhere/$1');
 
@@ -61,6 +62,18 @@ $routes->group('admin',['filter'=>'Auth'],function($routes){
 	$routes->add('user/find/(:any)','Admin\user::find/$1');
 	$routes->add('user/delete/(:any)','Admin\user::delete/$1');
 	$routes->add('user/update/(:any)/(:any)','Admin\user::update/$1/$2');
+});
+
+$routes->group('front',['filter'=>'Front'],function($routes){
+	$routes->add('Beli', 'Front\Beli::index');
+	$routes->add('beli/index/(:any)', 'Front\Beli::index/$1');
+	$routes->add('Beli/delete/(:any)', 'Front\Beli::delete/$1');
+	$routes->add('Beli/tambah/(:any)', 'Front\Beli::tambah/$1');
+	$routes->add('Beli/kurang/(:any)', 'Front\Beli::kurang/$1');
+	$routes->add('Beli/checkout/(:any)', 'Front\Beli::checkout/$1');
+	$routes->add('Beli/checkout', 'Front\Beli::checkout');
+	$routes->add('homepage/histori', 'Front\Homepage::histori');
+	$routes->add('homepage/detail/(:any)', 'Front\Homepage::detail/$1');
 });
 
 /**
